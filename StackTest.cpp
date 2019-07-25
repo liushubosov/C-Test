@@ -72,39 +72,43 @@ public:
 		//nMax = nMax + 1 + nBase;
 		return nMax;
 	}
+
+
+    //查找字符串数组中的最长公共前缀
+    //如果不存在公共前缀，返回空字符串 ""
+    string longestCommonPrefix(vector<string>& strs) {
+        string result = "";
+        if(strs.size() == 0)
+            return result;
+        else if(strs.size() == 1)
+            return strs[0];
+        
+        bool bFlag = false;
+        string strBase = strs[0];
+        for(int i=0;i < strBase.length();i++)
+        {
+            char cHead = strBase[i];
+            for(int j=1;j < strs.size();j++)
+            {
+                if(strs[j][i] == cHead)
+                    bFlag = true;
+                else
+                {
+                    bFlag = false;
+                    break;
+                }
+            }
+            if(!bFlag)
+                break;
+            else
+                result += cHead;
+        }
+        return result;
+    }
 };
 
 int main()
 {
-	cout << "hello" << endl;
-	Solution solut;
-	vector<Point> points;
-	Point p1, p2, p3, p4, p5;
-	p1.x = -4;
-	p1.y = -4;
-	p2.x = -8;
-	p2.y = -582;
-	p3.x = -3;
-	p3.y = 3;
-	p4.x = -9;
-	p4.y = -651;
-	p5.x = 9;
-	p5.y = 591;
-	points.push_back(p1);
-	//points.push_back(p2);
-	//points.push_back(p3);
-	//points.push_back(p4);
-	//points.push_back(p5);
-	int nMax = solut.maxPoints(points);
-	cout << "max value = " << nMax << endl;
-
-	//double fV = 0.0;
-	//fV = 1.0 / 3.0;
-	//cout << fV << endl;
-
-	//遍历 map， 找出最大值
-
-
 	system("pause");
     return 0;
 }
