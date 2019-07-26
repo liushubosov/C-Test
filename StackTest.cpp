@@ -23,6 +23,13 @@ struct Point
 
 };
 
+// Definition for singly-linked list.
+ struct ListNode {
+	 int val;
+     ListNode *next;
+     ListNode(int x) : val(x), next(NULL) {}
+};
+
 class Solution {
 public:
 	int maxPoints(vector<Point> &points) {
@@ -104,6 +111,102 @@ public:
                 result += cHead;
         }
         return result;
+    }
+
+	//给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串，判断字符串是否有效
+	bool isValid(string s) {
+		if (s.empty())
+			return true;
+		stack<char> st;
+		map<char, char> ma;
+		ma['('] = ')';
+		ma['['] = ']';
+		ma['{'] = '}';
+		map<char, char>::iterator iter;
+        //第一个字符必须为左括号
+        char cValue = s[0];
+        iter = ma.find(cValue);
+        if (iter == ma.end())
+		{
+			return false;
+		}
+        st.push(cValue);
+        
+		for (int i = 1; i < s.length(); i++)
+		{
+			cValue = s[i];           			
+			if (st.empty())
+				st.push(cValue);
+			else
+			{
+				char cLast = st.top();
+				//栈里不为空，当前字符又是左括号，继续压入栈
+				iter = ma.find(cLast);
+				if (iter != ma.end())
+				{
+					if (cValue == iter->second)
+						st.pop();
+					else
+						st.push(cValue);
+				}
+				else
+					return false;
+			}
+		}
+        if (st.empty())
+			return true;
+		else
+			return false;
+
+	}
+
+//将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。
+	ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
+		ListNode* newp = new ListNode(0);
+        ListNode* root = newp;
+		while (l1 != NULL && l2 != NULL)
+		{
+			if (l1->val < l2->val)
+			{
+				newp->next = l1;
+				l1 = l1->next;
+			}
+			else
+			{
+				newp->next = l2;
+				l2 = l2->next;
+			}
+            newp = newp->next;
+		}
+		if (l1 != NULL)
+		{
+			newp->next = l1;
+            newp = newp->next;
+		}
+		if (l2 != NULL)
+		{
+			newp->next = l2;
+            newp = newp->next;
+		}
+		return root->next;
+	}
+
+
+//给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。
+	int removeDuplicates(vector<int>& nums) {
+        if(nums.size() == 0)
+            return 0;
+        int i = 0;
+        for(int j=1;j < nums.size();j++)
+        {
+            if(nums[j] != nums[i])
+            {
+                i++;
+                nums[i] = nums[j]; 
+            }
+        }
+             
+        return i+1;
     }
 };
 
