@@ -254,7 +254,7 @@ public:
         int i = 0;
         for(i;i < nums.size();i++)
         {
-            if(nums[i] == target || nums[i] > target)
+            if(nums[i] >= target)
                 return i;
         }
         return i;
