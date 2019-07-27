@@ -208,6 +208,46 @@ public:
              
         return i+1;
     }
+
+//给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。
+//你可以假设数组中无重复元素。
+	int searchInsert(vector<int>& nums, int target) {
+        //二分查找
+        int len = nums.size();
+        if(len == 0)
+            return 0;
+        int nBlockLen = len;
+        int medPos = nBlockLen / 2;
+        bool bAdd = false;
+               
+        while(medPos >= 0 && nBlockLen > 0 )
+        {                     
+            int mLen = nBlockLen / 2;            
+            if(nums[medPos] > target)
+            {//left(nums[min,med],target)
+                medPos -=  mLen;
+                bAdd = false;
+            }
+            else if(nums[medPos] == target)
+                return medPos; 
+            else
+            {//right(nums[med + 1,max],target)
+                medPos += mLen;
+                bAdd = true;
+                if( medPos >= len)
+                    medPos = len-1; 
+            }          
+            nBlockLen = mLen;
+        }
+        
+        if (medPos < 0)
+            medPos = 0;
+        else if( medPos >= len)
+            medPos = len-1;   
+        if (bAdd)
+			medPos++;
+        return medPos;
+    }
 };
 
 int main()
