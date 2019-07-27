@@ -211,7 +211,8 @@ public:
 
 //给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。
 //你可以假设数组中无重复元素。
-	int searchInsert(vector<int>& nums, int target) {
+//此版本废弃
+	int searchInsert_delete(vector<int>& nums, int target) {
         //二分查找
         int len = nums.size();
         if(len == 0)
@@ -247,6 +248,16 @@ public:
         if (bAdd)
 			medPos++;
         return medPos;
+    }
+
+	int searchInsert(vector<int>& nums, int target) {
+        int i = 0;
+        for(i;i < nums.size();i++)
+        {
+            if(nums[i] == target || nums[i] > target)
+                return i;
+        }
+        return i;
     }
 };
 
