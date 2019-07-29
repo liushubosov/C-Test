@@ -287,6 +287,30 @@ public:
         return digits;
     }
 
+/**
+ * 实现 strStr() 函数。
+ * 给定一个 haystack 字符串和一个 needle 字符串，在 haystack 字符串中找出 needle 字符串出现的第一个位置 (从0开始)。如果不存在，则返回  -1。
+ */
+	int strStr(string haystack, string needle) {
+        int pLen = needle.length();
+        if(pLen == 0)
+            return 0;        
+        int tLen = haystack.length();
+        if(tLen == 0)
+            return -1;       
+        if(tLen < pLen)
+            return -1;
+        else if(haystack == needle)
+            return 0;
+        
+        for(int i=0;i < tLen - pLen + 1;i++)
+        {
+            if(haystack.substr(i,pLen) == needle)
+                return i;
+        }      
+        return -1;
+    }
+
 };
 
 int main()
