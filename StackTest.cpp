@@ -346,6 +346,20 @@ public:
         return root->next;
     }
 
+	/**
+	 * 给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
+	 */
+	int maxSubArray(vector<int>& nums) {
+        int nMax = nums[0];
+        int result = nums[0];
+        for(int i=1;i < nums.size();i++)
+        {
+            nMax = max(nums[i],nMax + nums[i]);
+            result = max(result,nMax);
+        }
+        return result;
+    }
+
 };
 
 int main()
