@@ -394,6 +394,31 @@ public:
         return result;
     }
 
+	/**
+	 * 121. 买卖股票的最佳时机
+	 * 给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。
+	 * 如果你最多只允许完成一笔交易（即买入和卖出一支股票），设计一个算法来计算你所能获取的最大利润。
+	 * 注意你不能在买入股票前卖出股票。
+	 */
+	int maxProfit(vector<int>& prices) {
+        int len = prices.size();
+        if(len < 2) return 0;
+        int maxP = INT_MIN;
+        int buyPos = 0;
+        for(int i=1;i < len;i++)
+        {
+            int curP = prices[i] - prices[buyPos];
+            //找到最低价格的位置
+            if(curP < 0 )
+            {
+                buyPos = i;
+                continue;
+            }
+            maxP = max(curP,maxP);
+        }            
+        return max(maxP, 0);
+    }
+
 };
 
 int main()
