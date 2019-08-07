@@ -473,6 +473,21 @@ public:
         return res;
     }
 
+	/**
+	 * 189. 旋转数组
+	 * 给定一个数组，将数组中的元素向右移动 k 个位置，其中 k 是非负数。
+	 */
+	void rotate(vector<int>& nums, int k) {
+        int len = nums.size();
+        if(k == 0 ) return;
+        k %= len;
+        k = k == 0?len:k;
+        //三次旋转
+        reverse(nums.begin(), nums.end()-k);
+        reverse(nums.begin()+(len-k), nums.end());
+        reverse(nums.begin(), nums.end());
+    }
+
 };
 
 int main()
