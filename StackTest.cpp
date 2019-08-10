@@ -547,6 +547,22 @@ public:
         return true;
     }
 
+    /**
+     * 178. 分数排名
+     * 编写一个 SQL 查询来实现分数排名。如果两个分数相同，则两个分数排名（Rank）相同。请注意，平分后的下一个名次应该是下一个连续的整数值。换句话说，名次之间不应该有“间隔”。
+    **/
+
+   /**
+    * select S.Score, T.Rank from Scores S
+inner join
+(
+    select a.Score, (@rowNum:=@rowNum + 1) as 'Rank'
+    from (select Score from Scores group by Score order by Score desc) a,
+     (SELECT @rowNum:=0)  b
+) as T on S.Score = T.Score
+order by S.Score desc
+    * */
+
 };
 
 int main()
