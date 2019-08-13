@@ -580,6 +580,33 @@ order by S.Score desc
         return res;
     }
 
+    /**
+     * 3. 无重复字符的最长子串
+     * 给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
+     * 
+    **/
+   int lengthOfLongestSubstring(string s) {
+        map<char, int> myMap;
+        int res = 0, len = 0;
+        map<char,int>::iterator iter1;
+        for(int i=0;i < s.length();i++)
+        {
+            iter1 = myMap.find(s[i]);
+            if(iter1 != myMap.end())
+            {
+                res = max(res, (i - iter1->second));
+                len = 0;
+            }
+            else
+            {
+                len++;
+                res = max(res,len);
+            }
+            myMap[s[i]] = i;
+        }
+        return res;
+    }
+
 };
 
 int main()
