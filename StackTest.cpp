@@ -564,6 +564,41 @@ order by S.Score desc
     * */
 
    /**
+    * 601. 体育馆的人流量
+    * X 市建了一个新的体育馆，每日人流量信息被记录在这三列信息中：序号 (id)、日期 (visit_date)、 人流量 (people)。
+    * 请编写一个查询语句，找出人流量的高峰期。高峰期时，至少连续三行记录中的人流量不少于100。
+
+1.
+    * select * from stadium  where people > 99 and id not in ( 
+    
+    select s.id from (select * from stadium  where people > 99) s
+    left join stadium s1 on s1.id=s.id+1 
+    left join stadium s2 on s2.id=s.id-1 
+    where (s1.id is null or s1.people < 100) and (s2.id is null or s2.people < 100)
+    union all
+    select s.id from (select * from stadium  where people > 99) s
+    left join stadium s1 on s1.id=s.id+1 and s1.people > 99
+    left join stadium s2 on s2.id=s.id+2
+    left join stadium s3 on s3.id=s.id-1 
+    where s1.id is not null and (s2.id is null or s2.people < 100 ) and (s3.id is null or s3.people < 100)
+    union all
+    select s1.id from (select * from stadium  where people > 99) s
+    left join stadium s1 on s1.id=s.id+1 and s1.people > 99
+    left join stadium s2 on s2.id=s.id+2 
+    left join stadium s3 on s3.id=s.id-1
+    where s1.id is not null and (s2.id is null or s2.people < 100 ) and (s3.id is null or s3.people < 100)    
+    ) 
+
+2.
+    select distinct a.* from stadium a, stadium b, stadium c
+    where ((b.id=a.id+1 and c.id=a.id+2) or
+        (b.id=a.id-1 and c.id=a.id+1) or
+        (b.id=a.id-2 and c.id=a.id-1)) and
+        (a.people >= 100 and b.people >= 100 and c.people >= 100)
+    order by a.id
+    * **/
+
+   /**
     * 190. 颠倒二进制位
     * 颠倒给定的 32 位无符号整数的二进制位。
     *  
