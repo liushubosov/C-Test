@@ -16,7 +16,8 @@
 * 解题思路： 
 *   可能是负数，先把负数转正，最后在字符串开头加个 -
 *   类似十进制，mod = n%7,mod是当前位的值，n /= 7,从低位一直循环到最高位
-*   把求得的字符串反转即可
+*   //把求得的字符串反转即可
+*   字符串添加字符在首部，这样就不需要反转了
 */
 
 string convertToBase7(int num)
@@ -32,11 +33,13 @@ string convertToBase7(int num)
     string res;
     while (num)
     {
-        res.push_back((num % 7) + '0');
+        //res.push_back((num % 7) + '0');
+        res = to_string(num%7) + res;
         num /= 7;
     }
     if (bFlag)
-        res.push_back('-');
-    reverse(res.begin(), res.end());
+        //res.push_back('-');
+        res = '-' + res;
+    //reverse(res.begin(), res.end());
     return res;
 }
