@@ -17,26 +17,33 @@
 2.你设计的页面的长度和宽度必须都是正整数。
 * 
 * 解题思路： 
-*   找到面积的平方根，然后向下循环找出 宽度 W
+*   找到面积的平方根，然后向下循环找出最贴近平方根的 宽度 W
 */
 
-int findContentChildren(vector<int> &g, vector<int> &s)
-{
-    sort(g.begin(), g.end());
-    sort(s.begin(), s.end());
-    int p = s.size() - 1;
-    int n = 0;
-    for (int i = g.size() - 1; i >= 0; i--)
-    {
-        for (int j = p; j >= 0; j--)
-        {
-            if (g[i] <= s[j])
-            {
-                n++;
-                p = j - 1;
-                break;
-            }
+class Solution {
+public:
+    vector<int> constructRectangle(int area) {
+        vector<int> vtr;
+        int x = sqrt(area);
+        while (area % x != 0) {
+            x--;
         }
+        vtr.push_back(area/x);
+        vtr.push_back(x);
+        return vtr;
     }
-    return n;
-}
+};
+
+
+//* 解题思路： 
+//* 思路一致，但是返回值由 vector 变成了 {}，节省了空间
+class Solution2 {
+public:
+    vector<int> constructRectangle(int area) {
+        int x = sqrt(area);
+        while (area % x != 0) {
+            x--;
+        }
+        return {area/x,x};
+    }
+};
