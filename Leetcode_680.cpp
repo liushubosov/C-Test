@@ -52,3 +52,34 @@ public:
         return true;
     }
 };
+
+
+//v2.0优化版 
+//出现不等字符的时候，只需要去掉一个字符，判断剩余未判断的字符是否构成回文即可。
+class Solution2 {
+public:
+    bool validPalindrome(string s) {
+        int left=0, right=s.length()-1;
+        while(left < right)
+        {
+            if(s[left] != s[right])
+                return (vaildStr(s, left+1, right) || vaildStr(s, left, right-1) );
+            left++;
+            right--;
+        }
+        return true;
+    }
+
+    bool vaildStr(const string& s, int left, int right)
+    {
+        //int left=0, right=s.length()-1;
+        while(left < right)
+        {
+            if(s[left] != s[right])
+                return false;
+            left++;
+            right--;
+        }
+        return true;
+    }
+};
