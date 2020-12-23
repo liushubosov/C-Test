@@ -35,7 +35,7 @@ kthLargest.add(4);   // return 8
 * 
 * 解题思路： 
 *   第一种方式，使用优先队列（底层是用堆来实现的）。
-*    priority_queue<Type, Container, Functional>， 
+*    priority_queue<Type, Container, Functional>，  
 *    Type 为数据类型， Container 为保存数据的容器， Functional 为数据比较方式。
 *    后两个参数不写， Container 默认为 vector, Functional 为 operator <, 也就是大顶堆，队头元素最大。
 *   本题为小顶堆。
