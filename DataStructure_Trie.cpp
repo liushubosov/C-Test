@@ -16,7 +16,6 @@
 
 using namespace std;
 
-//方式一：递归
 class Trie {
 private:
     struct TrieNode {
@@ -34,11 +33,36 @@ public:
     }
 
     void insert(const string& word) {
+        //方式一：递归
         insert(0, word, 0);
+
+        //方式二：迭代
+        int treeID = 0;
+        for(const auto &w : word){
+            if(trie[treeID].nextMap.count(w) == 0){
+                trie[treeID].nextMap[w] = trie.size();
+                trie.push_back(TrieNode());
+            }
+            treeID = trie[treeID].nextMap[w];
+        }
+        trie[treeID].bEnd = true;
     }
 
-    void search(const string& word) {
-        search(0, word, 0);
+    bool search(const string& word) {
+        bool bFlag = false;
+        //方式一：递归
+        bFlag = search(0, word, 0);
+
+        //方式二：迭代
+        int treeID = 0;
+        for(const auto &w : word){
+            if(trie[treeID].nextMap.count(w) == 0 || !trie[ trie[treeID].nextMap[w] ].bEnd){
+                return false;
+            }
+            treeID = trie[treeID].nextMap[w];
+        }
+        bFlag = true;
+        return bFlag;
     }
 
 private:
