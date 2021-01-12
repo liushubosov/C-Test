@@ -35,13 +35,15 @@ public:
     };
     string trans(int i)
     {
-        if (i == 0)
+        if(i > 2)  
+            return to_string(i + 1);
+        else if (i == 0)
             return "Gold Medal";
-        if (i == 1)
+        else if (i == 1)
             return "Silver Medal";
-        if (i == 2)
+        else if (i == 2)
             return "Bronze Medal";
-        return to_string(i + 1);
+            
     }
     vector<string> findRelativeRanks(vector<int> &nums)
     {
