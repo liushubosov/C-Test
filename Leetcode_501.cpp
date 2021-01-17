@@ -26,23 +26,23 @@
 class Solution {
 public:
     vector<int> res;
-    int maxCount, base, curCount;
+    int prevCount, prevNum, curCount;
 
     void checkNum(int n){
-        if(n == base){
-            curCount++;
+        if(n == prevNum){
+            ++curCount;
         }else{
-            base = n;
+            prevNum = n;
             curCount = 1;
         }
 
-        if(curCount == maxCount)
-            res.push_back(base);
-        else if(curCount > maxCount){
-            //res = vector<int> {base};
+        if(curCount == prevCount)
+            res.push_back(prevNum);
+        else if(curCount > prevCount){
+            //res = vector<int> {prevNum};
             res.clear();
-            res.push_back(base);
-            maxCount = curCount;
+            res.push_back(prevNum);
+            prevCount = curCount;
         }
     }
 

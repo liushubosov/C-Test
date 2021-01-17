@@ -26,7 +26,7 @@ public:
         vector<int> vtr;
         int x = sqrt(area);
         while (area % x != 0) {
-            x--;
+            --x;
         }
         vtr.push_back(area/x);
         vtr.push_back(x);
@@ -42,7 +42,7 @@ public:
     vector<int> constructRectangle(int area) {
         int x = sqrt(area);
         while (area % x != 0) {
-            x--;
+            --x;
         }
         return {area/x,x};
     }

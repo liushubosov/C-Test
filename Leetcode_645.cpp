@@ -7,7 +7,7 @@
 *
 * 
 * 解题思路： 
-*   数组的值和 1~n 异或 的救国，正好是重复数和丢失数的异或结果，因为 a^b^a^c=b^c, 相同的数异或结果是 0
+*   数组的值和 1~n 异或 的结果，正好是重复数和丢失数的异或结果，因为 a^b^a^c=b^c, 相同的数异或结果是 0
 *   接下来的重点是，把两数的 异或结果分离， 采用的方法是
 *       以异或结果二进制最右位的 1 作为标志位，使数组的值分为两组，并使 1~n 分为两组，
 *       再次使 数组和 1~n 异或，这次由于分为两组，所以得到了两个值，一个为 重复数，另一个为丢失数
@@ -21,7 +21,7 @@ public:
         unordered_set<int> mySet;
         int s = 0;
         //第一步，求得 重复数和丢失数的 异或结果 s
-        for(int i=0;i < size;i++)
+        for(int i=0;i < size;++i)
         {
             s ^= nums[i];
             s ^= i+1;
@@ -35,7 +35,7 @@ public:
         // 但是不清楚到底哪个是重复数，哪个是丢失数
         int nFlag = s & ~(s-1);
         int x1=0, x2=0, nCount=0;
-        for(int i=1;i <= size;i++){
+        for(int i=1;i <= size;++i){
             if((i&nFlag) == 0)
             {
                 x1 ^= i;
@@ -43,16 +43,16 @@ public:
                 x2 ^= i;
         }
 
-        for(int i=0;i < size;i++){
+        for(int i=0;i < size;++i){
             if((nums[i]&nFlag)==0)
                 x1 ^= nums[i];
             else
                 x2 ^= nums[i];
         }
         //第三步 再遍历一次， 重复数出现次数为2，丢失数为0.
-        for(int i=0;i < size;i++){
+        for(int i=0;i < size;++i){
             if(x1 == nums[i])
-                nCount++;
+                ++nCount;
         }
         if(nCount == 0)
             return {x2,x1};

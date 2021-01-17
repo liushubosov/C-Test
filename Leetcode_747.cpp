@@ -29,7 +29,7 @@ class Solution {
 public:
     int dominantIndex(vector<int>& nums) {
         int cur=0, pre=0, index=0;
-        for(int i=0;i < nums.size();i++){
+        for(int i=0;i < nums.size();++i){
             if(nums[i] >= cur){
                 pre = cur;
                 cur = nums[i];

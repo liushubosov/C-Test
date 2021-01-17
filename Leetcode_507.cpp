@@ -13,7 +13,7 @@
 */
 /* 
 * 解题思路： 
-*   先求出平方根，遍历从0到平方根，如果能被整除，说明时正因子
+*   先求出平方根，遍历从0到平方根，如果能被整除，说明是正因子
 * 
 */
 
@@ -22,12 +22,14 @@ bool checkPerfectNumber(int num)
     if (num < 6)
         return false;
     int s = 1;
-    for (int i = sqrt(num); i > 1; i--)
+    for (int i = sqrt(num); i > 1; --i)
     {
         if (num % i == 0)
         {
             s += (num / i);
-            s += i;
+            //num=16, i=4
+            if(i*i != num)
+                s += i;
             if (s > num)
                 return false;
         }

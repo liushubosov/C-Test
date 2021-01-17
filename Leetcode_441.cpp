@@ -14,7 +14,7 @@ int arrangeCoins01(long n)
         return n;
     long sum = 0;
     int i;
-    for (i = 1; i < n; i++)
+    for (i = 1; i < n; ++i)
     {
         sum += i;
         if (sum > n)

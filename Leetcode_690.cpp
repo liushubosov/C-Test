@@ -31,7 +31,7 @@ public:
         int res = 0;
         stack<Employee*> myStack;
         unordered_map<int, int> myMap;
-        for(int i=0;i < employees.size();i++){
+        for(int i=0;i < employees.size();++i){
             myMap[employees[i]->id ] = i;
         }
 
@@ -40,7 +40,7 @@ public:
             Employee* p = myStack.top();
             myStack.pop();
             res += p->importance;
-            for(int j=0;j < p->subordinates.size();j++){
+            for(int j=0;j < p->subordinates.size();++j){
                 myStack.push(employees[myMap[p->subordinates[j]]]);
             }
         }

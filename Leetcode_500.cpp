@@ -25,7 +25,7 @@ vector<string> findWords(vector<string> &words)
     if (words.size() == 0)
         return res;
     string line1 = "qwertyuiopQWERTYUIOP", line2 = "asdfghjklASDFGHJKL", line3 = "zxcvbnmZXCVBNM";
-    for (int i = 0; i < words.size(); i++)
+    for (int i = 0; i < words.size(); ++i)
     {
         int length = words[i].length();
         if (length != 0)
@@ -38,10 +38,10 @@ vector<string> findWords(vector<string> &words)
                 lineN = line2;
             else if (line3.find(words[i][0]) != string::npos)
                 lineN = line3;
-            for (int j = 1; j < length; j++)
+            for (int j = 1; j < length; ++j)
             {
                 if (lineN.find(words[i][j]) != string::npos)
-                    n++;
+                    ++n;
                 else
                     break;
             }

@@ -15,11 +15,11 @@
 int countSegments(string s)
 {
     int rt = 0;
-    for (int i = 0; i < s.size(); i++)
+    for (int i = 0; i < s.size(); ++i)
     {
         //条件1：字符串开头或者前一字符为空格  条件2： 当前字符不是空格
         if ((i == 0 || s[i - 1] == ' ') && s[i] != ' ')
-            rt++;
+            ++rt;
     }
     return rt;
 }

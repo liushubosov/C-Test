@@ -42,13 +42,13 @@ class Solution {
 public:
     bool isToeplitzMatrix(vector<vector<int>>& matrix) {
         //检查第一列的所有值
-        for(int i=0;i < matrix.size()-1;i++){
+        for(int i=0;i < matrix.size()-1;++i){
             if(!check(matrix, i, 0, matrix[i][0]))
                 return false;
         }
 
         //检查第一行的所有值，除了第一个[0,0]
-        for(int j=1;j < matrix[0].size()-1;j++){
+        for(int j=1;j < matrix[0].size()-1;++j){
             if(!check(matrix, 0, j, matrix[0][j]))
                 return false;
         }

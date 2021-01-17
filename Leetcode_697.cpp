@@ -37,7 +37,7 @@ public:
 public:
     int findShortestSubArray(vector<int>& nums) {
         unordered_map<int, Node> myMap;
-        for(int i=0;i < nums.size();i++)
+        for(int i=0;i < nums.size();++i)
         {
             if(myMap.count(nums[i]) == 0)
             {   
@@ -49,7 +49,7 @@ public:
             }
             else
             {
-                myMap[nums[i]].count++;
+                ++myMap[nums[i]].count;
                 myMap[nums[i]].endPos = i;
             }
 

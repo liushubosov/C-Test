@@ -23,14 +23,14 @@ public:
         unordered_map<int,int> myMap;
         int nSize = nums.size();
         int nPreCount=0;
-        for(int i=0;i < nSize;i++){
-            if(myMap.count(nums[i]) == 0)
-                myMap[nums[i]] = 1;
-            else
+        for(int i=0;i < nSize;++i){
+            //if(myMap.count(nums[i]) == 0)
+            //    myMap[nums[i]] = 1;
+            //else
                 myMap[nums[i]]++;
         }
         
-        for(auto iter=myMap.begin();iter != myMap.end();iter++){
+        for(auto iter=myMap.begin();iter != myMap.end();++iter){
              if(myMap.count(iter->first + 1) != 0){
                  nPreCount = max(nPreCount, iter->second + myMap[iter->first + 1]);
              }

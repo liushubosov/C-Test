@@ -52,7 +52,7 @@ public:
         if(image[row][col] != eql)
             return;
         image[row][col] = newColor;
-        for(int i=0;i <4;i++){
+        for(int i=0;i <4;++i){
             int x = row + mx[i];
             int y = col + my[i];
             if(x >=0 && x < rowSize && y >=0 && y < colSize)
@@ -78,7 +78,7 @@ public:
         while(!myQueue.empty()){
             auto p = myQueue.front();
             myQueue.pop();
-            for(int i=0;i < 4;i++){
+            for(int i=0;i < 4;++i){
                 int x = p.first + mx[i];
                 int y = p.second + my[i];
                 if(x >=0 && y >=0 && x < rowSize && y < colSize && image[x][y] == oldColor)

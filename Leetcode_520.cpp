@@ -35,7 +35,7 @@ bool detectCapitalUse(string word)
         bUpper = true;
     if (word[0] >= 'a' && bUpper)
         return false;
-    for (int i = 2; i < length; i++)
+    for (int i = 2; i < length; ++i)
     {
         if (!bUpper && word[i] < 'a')
             return false;

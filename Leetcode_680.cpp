@@ -33,8 +33,8 @@ public:
                 else
                     return false;
             }
-            left++;
-            right--;
+            ++left;
+            --right;
         }
         return true;
     }
@@ -46,8 +46,8 @@ public:
         {
             if(s[left] != s[right])
                 return false;
-            left++;
-            right--;
+            ++left;
+            --right;
         }
         return true;
     }
@@ -64,8 +64,8 @@ public:
         {
             if(s[left] != s[right])
                 return (vaildStr(s, left+1, right) || vaildStr(s, left, right-1) );
-            left++;
-            right--;
+            ++left;
+            --right;
         }
         return true;
     }
@@ -77,8 +77,8 @@ public:
         {
             if(s[left] != s[right])
                 return false;
-            left++;
-            right--;
+            ++left;
+            --right;
         }
         return true;
     }

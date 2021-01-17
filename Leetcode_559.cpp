@@ -38,7 +38,7 @@ public:
         if(!root)
             return 0;
         int deep = 0;
-        for(int i=0;i < root->children.size();i++){
+        for(int i=0;i < root->children.size();++i){
             deep = max(deep,maxDepth(root->children[i]));
         }
         return deep + 1;

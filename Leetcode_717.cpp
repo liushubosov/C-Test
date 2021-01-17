@@ -25,7 +25,7 @@ class Solution1 {
 public:
     bool isOneBitCharacter(vector<int>& bits) {
         int i = 0;
-        for(;i < bits.size()-1;i++)
+        for(;i < bits.size()-1;++i)
         {
             i += bits[i];
         }
@@ -38,7 +38,7 @@ class Solution2 {
 public:
     bool isOneBitCharacter(vector<int>& bits) {
         int i = bits.size()-2;
-        while(i >=0 && bits[i] > 0)  i--;
+        while(i >=0 && bits[i] > 0)  --i;
         return (bits.size() - i)%2 == 0;
     }
 };

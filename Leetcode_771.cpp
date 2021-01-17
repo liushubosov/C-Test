@@ -32,7 +32,7 @@ public:
             return res;
         for(const auto &c: stones){
             if(jewels.find(c) != string::npos)
-                res++;
+                ++res;
         }
         return res;
     }

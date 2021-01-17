@@ -44,16 +44,16 @@ public:
         int mylist[26]={0};
         for(const auto &c : licensePlate){
             if(c > '9')
-                mylist[(c|32)-'a']++;
+                ++mylist[(c|32)-'a'];
         }
         string res;
         for(const auto &s : words){
             int curList[26]={0};
             for(const auto &c : s){
-                curList[c - 'a']++;
+                ++curList[c - 'a'];
             }
             int i=0;
-            for(;i < 26;i++){
+            for(;i < 26;++i){
                 if(curList[i] < mylist[i])
                     break;
             }

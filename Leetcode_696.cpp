@@ -39,8 +39,8 @@ public:
             nPos++;
             while(nPos < s.length() && s[nPos] == curC)
             {
-                curCnt++;
-                nPos++;
+                ++curCnt;
+                ++nPos;
             }
             cnt += min(lastCnt, curCnt);
             lastCnt = curCnt;

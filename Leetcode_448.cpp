@@ -12,14 +12,14 @@
 vector<int> findDisappearedNumbers(vector<int> &nums)
 {
     vector<int> vtr;
-    for (int i = 0; i < nums.size(); i++)
+    for (int i = 0; i < nums.size(); ++i)
     {
         int newIndex = abs(nums[i]) - 1;
         if (nums[newIndex] > 0)
             nums[newIndex] *= -1;
     }
 
-    for (int j = 0; j < nums.size(); j++)
+    for (int j = 0; j < nums.size(); ++j)
     {
         if (nums[j] > 0)
             vtr.push_back(j + 1);

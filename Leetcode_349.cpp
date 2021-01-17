@@ -40,7 +40,8 @@ public:
         vector<int> vtr;
         set<int> a(nums1.begin(),nums1.end());
         set<int> b(nums2.begin(),nums2.end());
-        set_intersection(a.begin(), a.end(), b.begin(), b.end(), std::inserter(vtr,vtr.begin()));
+        //std::inserter(vtr,vtr.end()) 是插入迭代器，元素被插入到vtr.end()之前的位置
+        set_intersection(a.begin(), a.end(), b.begin(), b.end(), std::inserter(vtr,vtr.end()));
         return vtr;
     }
 };

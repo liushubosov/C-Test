@@ -65,9 +65,9 @@ public:
             if(sum == k)
                 return true;
             else if(sum < k)
-                left++;
+                ++left;
             else
-                right--;
+                --right;
         }     
         return false;
     }

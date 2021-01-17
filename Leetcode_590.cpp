@@ -44,7 +44,7 @@ public:
     void dfs(Node* p){
         if(!p)
             return;
-        for(int i=0;i < p->children.size();i++){
+        for(int i=0;i < p->children.size();++i){
             dfs(p->children[i]);
         }
         res.push_back(p->val);
@@ -67,7 +67,7 @@ public:
             Node* p = myStack.top();
             res.push_back(p->val);
             myStack.pop();
-            for(int i=0;i < p->children.size();i++){
+            for(int i=0;i < p->children.size();++i){
                 myStack.push(p->children[i]);
             }
         }
@@ -92,7 +92,7 @@ public:
                 res.push_back(p->val);
                 myStack.pop();
             }else{
-                for(int i=p->children.size()-1;i>=0 ;i--){
+                for(int i=p->children.size()-1;i>=0 ;--i){
                     myStack.push(p->children[i]);
                 }
                 p->children.clear();

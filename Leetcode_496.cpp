@@ -25,14 +25,14 @@ public:
     vector<int> nextGreaterElement(vector<int> &nums1, vector<int> &nums2)
     {
         int len2 = nums2.size();
-        if (len2 == 0)
-        {
-            for (int i = 0; i < nums1.size(); i++)
-            {
-                nums1[i] = -1;
-            }
-            return nums1;
-        }
+        // if (len2 == 0)
+        // {
+        //     for (int i = 0; i < nums1.size(); ++i)
+        //     {
+        //         nums1[i] = -1;
+        //     }
+        //     return nums1;
+        // }
         unordered_map<int, int> myMap;
         vector<int> res;
 
@@ -41,10 +41,10 @@ public:
             myMap[nums2[i]] = i;
         }
 
-        for (int i = 0; i < nums1.size(); i++)
+        for (int i = 0; i < nums1.size(); ++i)
         {
             int n = -1;
-            for (int j = myMap[nums1[i]] + 1; j < nums2.size(); j++)
+            for (int j = myMap[nums1[i]] + 1; j < nums2.size(); ++j)
             {
                 if (nums2[j] > nums1[i])
                 {

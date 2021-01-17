@@ -39,7 +39,7 @@ public:
     vector<int> countList;
     vector<double> averageOfLevels(TreeNode* root) {
         dfs(root, 0);
-        for(int i=0;i < res.size();i++){
+        for(int i=0;i < res.size();++i){
             res[i] = res[i] / countList[i];
         }
         return res;
@@ -50,7 +50,7 @@ public:
             return;
         if(level < res.size()){
             res[level] += p->val;
-            countList[level]++;
+            ++countList[level];
         }
         else{
             res.push_back(p->val);
@@ -87,7 +87,7 @@ public:
         {
             double sum = 0;
             int s = myQueue.size();
-            for(int i=0;i < s;i++)
+            for(int i=0;i < s;++i)
             {
                 TreeNode* p = myQueue.front();
                 myQueue.pop();

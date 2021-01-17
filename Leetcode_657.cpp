@@ -15,16 +15,16 @@ class Solution {
 public:
     bool judgeCircle(string moves) {
         int node[2] = {0,0};
-        for(int i=0;i < moves.length();i++)
+        for(int i=0;i < moves.length();++i)
         {
             if(moves[i] == 'L')
-                node[0]--;
+                --node[0];
             else if(moves[i] == 'R')
-                node[0]++;
+                ++node[0];
             else if(moves[i] == 'D')
-                node[1]--;
+                --node[1];
             else
-                node[1]++;
+                ++node[1];
         }
         return (node[0] == 0 && node[1] == 0);
     }

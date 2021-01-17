@@ -37,7 +37,7 @@ public:
         int res = 0;
         //           19  18  17  16  15  14  13  12  11  10  9  8  7  6  5  4  3  2  1  0
         //665772 = ( 1   0   1   0   0   0   1   0   1   0   0  0  1  0  1  0  1  1  0  0 )
-        for(int i=L;i <= R;i++){
+        for(int i=L;i <= R;++i){
             res += (665772>>__builtin_popcount(i)) & 1;
         }
         return res;
@@ -49,10 +49,10 @@ class Solution2 {
 public:
     int countPrimeSetBits(int L, int R) {
         int res = 0;
-        for(int i=L;i <= R;i++){
+        for(int i=L;i <= R;++i){
             int n = __builtin_popcount(i);
             if(n==2 || n==3 || n==5 || n==7 || n==11 || n==13 || n==17 || n==19)
-                res++;
+                ++res;
         }
         return res;
     }

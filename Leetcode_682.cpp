@@ -43,7 +43,7 @@ public:
     int calPoints(vector<string>& ops) {
         int res = 0;
         stack<int> myStack;
-        for(int i=0;i < ops.size();i++)
+        for(int i=0;i < ops.size();++i)
         {
             if(ops[i] == "+")
             {
