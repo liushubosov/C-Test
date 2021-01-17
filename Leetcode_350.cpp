@@ -24,16 +24,16 @@ public:
     vector<int> intersect(vector<int>& nums1, vector<int>& nums2) {
         unordered_map<int, int> mymap;
         for(const auto & n : nums1){
-            if(mymap.find(n) != mymap.end())
-                mymap[n]++;
-            else
-                mymap[n] = 1;
+            //if(mymap.find(n) != mymap.end())
+                ++mymap[n];
+            //else
+            //    mymap[n] = 1;
         }
         vector<int> res;
         for(const auto &n : nums2){
             if(mymap.find(n) != mymap.end() && mymap[n] > 0){
                 res.push_back(n);
-                mymap[n]--;
+                --mymap[n];
             }
         }
         return res;
