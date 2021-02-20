@@ -26,32 +26,20 @@ strs[i] 仅由小写英文字母组成
 
 class Solution {
 public:
-    string longestCommonPrefix(vector<string>& strs) {
-        string result = "";
+    string longestCommonPrefix(vector<string>& strs) {     
         if(strs.size() == 0)
-            return result;
+            return "";
         else if(strs.size() == 1)
             return strs[0];
-        
-        bool bFlag = false;
-        string strBase = strs[0];
-        for(int i=0;i < strBase.length();i++)
+        string result;
+        for(int i=0;i < strs[0].length();++i)
         {
-            char cHead = strBase[i];
-            for(int j=1;j < strs.size();j++)
+            for(int j=1;j < strs.size();++j)
             {
-                if(strs[j][i] == cHead)
-                    bFlag = true;
-                else
-                {
-                    bFlag = false;
-                    break;
-                }
+                if(strs[j][i] != strs[0][i])
+                    return result;
             }
-            if(!bFlag)
-                break;
-            else
-                result += cHead;
+            result += strs[0][i];
         }
         return result;
     }
