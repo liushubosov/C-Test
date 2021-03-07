@@ -37,8 +37,7 @@ public:
             else
                 pre = p;                
             p = p->next;
-        }
-        
+        }       
         return head;
     }
 };
