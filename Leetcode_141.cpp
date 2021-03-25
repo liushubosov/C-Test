@@ -12,7 +12,8 @@ pos 为 -1 或者链表中的一个 有效索引 。
 
 * 
 * 解题思路： 
-*   标记已遍历的节点
+*   1. 标记已遍历的节点
+*   2. 快慢指针
 */
 class Solution {
 public:
@@ -23,6 +24,22 @@ public:
                 return true;
             head->val = 100001;
             head = head->next;
+        }
+        return false;
+    }
+};
+
+class Solution2 {
+public:
+    bool hasCycle(ListNode *head) {
+        if(!head)   return false;
+        ListNode *p1 = head, *p2 = head->next;
+        while(p1 && p2){
+            if(p1 == p2) return true;
+            p1 = p1->next;
+            p2 = p2->next;
+            if(!p2) return false;
+            p2 = p2->next;
         }
         return false;
     }
