@@ -15,17 +15,16 @@
 class Solution {
 public:
     int rob(vector<int>& nums) {
-        int prepre = 0;
-        int pre = 0;
-        int cur = 0;
-        for(int i=0;i < nums.size();++i)
+        size_t n = nums.size();
+        if(n == 0) return 0;
+        else if(n == 1) return nums[0];
+        int prepre = nums[0];
+        int pre = max(nums[0],nums[1]);
+        int cur = pre;
+
+        for(int i=2;i < n;++i)
         {
-            if(i == 0)
-                cur = nums[i];
-            else if(i == 1)
-                cur = max(nums[i],pre);
-            else
-                cur = max(prepre+nums[i],pre);
+            cur = max(prepre+nums[i],pre);
             prepre = pre;
             pre = cur;
         }
