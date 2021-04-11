@@ -33,7 +33,7 @@ wordDictionary.search("b.."); // return True
 *   构造前缀树
 */
 
-vclass WordDictionary {
+class WordDictionary {
 public:
     bool is_string;
     WordDictionary *next[26];
@@ -58,11 +58,12 @@ public:
     /** Returns if the word is in the data structure. A word could contain the dot character '.' to represent any one letter. */
     bool search(const string &word) {
         WordDictionary *p = this;
-        for(int i=0;i < word.size();i++){
+        for(int i=0;i < word.size();++i){
             if(word[i] == '.'){
+                string nextWord = word.substr(i+1);
                 for(const auto &childP : p->next){
                     if(childP != nullptr){
-                        if(childP->search(word.substr(i+1)))
+                        if(childP->search(nextWord))
                             return true;
                     }
                 }
