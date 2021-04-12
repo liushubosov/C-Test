@@ -20,6 +20,7 @@
 * 
 * 解题思路： 
 *   1. 使用 set ，边插入边检查
+*   2. 直接使用数组初始化 set，比较 set 与数组的大小是否相等
 */
 
 class Solution {
@@ -34,5 +35,13 @@ public:
                 s.emplace(nums[i]);
         }
         return false;
+    }
+};
+
+class Solution2 {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+        unordered_set<int> s(nums.begin(),nums.end());
+        return nums.size() != s.size();
     }
 };
