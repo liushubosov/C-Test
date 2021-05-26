@@ -10,11 +10,11 @@
 
 * 
 * 解题思路： 
-*   使用map
-*   使用字符数组
+*   1. 使用map
+*   2. 使用字符数组
 */
 
-class Solution {
+class Solution1 {
 public:
     bool canConstruct(string ransomNote, string magazine) {
         unordered_map<char,int> myMap;
@@ -26,14 +26,30 @@ public:
         }
 
         for(int j=0;j < ransomNote.length();++j){
-            if(myMap.count(ransomNote[j]) == 0)
+            if(myMap.count(ransomNote[j]) == 0 || myMap[ransomNote[j]] < 1)
                 return false;
             else{
-                if(myMap[ransomNote[j]] < 1)
-                    return false;
-                else
-                    --myMap[ransomNote[j]];
+                --myMap[ransomNote[j]];
             }
+        }
+        return true;
+    }
+};
+
+
+class Solution2 {
+public:
+    bool canConstruct(string ransomNote, string magazine) {
+        int cnt[26] = {0};
+        for(const auto &c : magazine){
+            ++cnt[c-'a'];
+        }
+        for(const auto &c : ransomNote){
+            --cnt[c-'a'];
+        }
+        for(const auto &num: cnt){
+            if(num < 0)
+                return false;
         }
         return true;
     }
