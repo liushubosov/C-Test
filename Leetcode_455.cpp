@@ -36,3 +36,22 @@ int findContentChildren(vector<int> &g, vector<int> &s)
     }
     return n;
 }
+
+//2022-05-24 优化一版 避免使用两个for循环
+//贪婪算法，局部最优即全局最优
+class Solution {
+public:
+    int findContentChildren(vector<int>& g, vector<int>& s) {
+        std::sort(g.begin(),g.end());
+        std::sort(s.begin(),s.end());
+        int n = 0;
+        for(int i=g.size()-1, j = s.size() -1;i>=0 && j >= 0;--i){
+            if(g[i] <= s[j])
+            {
+                ++n;
+                 --j;
+            }
+        }
+        return n;
+    }
+};
